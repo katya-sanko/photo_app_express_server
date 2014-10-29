@@ -18,8 +18,13 @@ var mustBeAuthenticated = function(req, res, next) {
 }
 
 // GET
+var testApi = function(req, res) {
+  res.json({ message: "Api is working" });
+}
 
-console.log('hello');
+var greetings = function(req, res) {
+  return res.send("gentleman");
+}
 
 // POST
 var login = function(req, res, next) {
@@ -41,4 +46,8 @@ var login = function(req, res, next) {
 
 module.exports = function () {
   this.post('/api/login', login);
+
+  this.get('/api/test', testApi);
+
+  this.get('/api/greetings', greetings);
 }
